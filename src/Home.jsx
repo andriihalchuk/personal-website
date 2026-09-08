@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { FaLinkedin, FaGithub, FaBars, FaTimes } from 'react-icons/fa';
 import { MdLightMode, MdDarkMode } from 'react-icons/md';
 import { useLocation, Link } from 'react-router-dom';
-import ParticlesBackground from './ParticlesBackground';
 
 // Extracted navigation data to keep the JSX clean
 const NAV_LINKS = [
@@ -72,8 +71,8 @@ export default function Home({ isDarkMode, setIsDarkMode }) {
           </div>
 
           <div className="flex gap-4">
-            <a className="btn-socials hover:text-blue-500" target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in//"><FaLinkedin /></a>
-            <a className="btn-socials hover:text-violet-600" target="_blank" rel="noopener noreferrer" href="https://github.com/"><FaGithub /></a>
+            <a className="btn-socials hover:text-blue-500" target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/andrii-halchuk/"><FaLinkedin /></a>
+            <a className="btn-socials hover:text-violet-600" target="_blank" rel="noopener noreferrer" href="https://github.com/andriihalchuk"><FaGithub /></a>
           </div>
 
           <div className="flex">
@@ -120,8 +119,8 @@ export default function Home({ isDarkMode, setIsDarkMode }) {
 
             {/* Mobile Socials */}
             <div className="flex gap-8 mt-4 text-4xl">
-              <a className="hover:text-blue-500" target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in//"><FaLinkedin /></a>
-              <a className="hover:text-violet-600" target="_blank" rel="noopener noreferrer" href="https://github.com/"><FaGithub /></a>
+              <a className="hover:text-blue-500" target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/andrii-halchuk/"><FaLinkedin /></a>
+              <a className="hover:text-violet-600" target="_blank" rel="noopener noreferrer" href="https://github.com/andriihalchuk"><FaGithub /></a>
             </div>
           </div>
         )}
@@ -129,13 +128,14 @@ export default function Home({ isDarkMode, setIsDarkMode }) {
 
       {/* Main Content */}
       <main
-        className={`p-10 flex flex-col items-center justify-center gap-80 text-4xl ${isDarkMode ? 'text-blue-200' : 'text-blue-950'
+        className={`p-10 flex flex-col items-center justify-center gap-30 text-4xl ${isDarkMode ? 'text-blue-200' : 'text-blue-950'
           }`}
       >
         <section className="max-w-4xl w-full scroll-mt-24" id="general">
-          <h1 className="text-center mb-6 font-bold">A little about me</h1>
+          <h1 className="text-center mb-6 font-bold">Andrii Halchuk</h1>
           <p className="leading-relaxed text-center text-3xl">
-            Hey, my name is and I am a first year Computer Science student at the University of .
+            Education: Computer Science @ University of Warwick '28
+
           </p>
         </section>
 

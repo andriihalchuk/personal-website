@@ -55,7 +55,7 @@ export default function ParticlesBackground({ isDarkMode }) {
               enable: true,
               outModes: { default: "bounce" },
               random: false,
-              speed: 1.2,
+              speed: 0.7,
               straight: false,
             },
             number: {

@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { MdLightMode, MdDarkMode } from 'react-icons/md';
 import { Link } from 'react-router-dom'
 import { FaLinkedin, FaGithub, FaBars, FaTimes } from 'react-icons/fa';
-import ParticlesBackground from './ParticlesBackground';
 
 const NAV_LINKS = [
   { label: 'General', href: '/#general' },
@@ -59,8 +58,8 @@ export default function Blog({ isDarkMode, setIsDarkMode }) {
           </div>
 
           <div className="flex gap-4">
-            <a className="btn-socials hover:text-blue-500" target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in//"><FaLinkedin /></a>
-            <a className="btn-socials hover:text-violet-600" target="_blank" rel="noopener noreferrer" href="https://github.com/"><FaGithub /></a>
+            <a className="btn-socials hover:text-blue-500" target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/andrii-halchuk/"><FaLinkedin /></a>
+            <a className="btn-socials hover:text-violet-600" target="_blank" rel="noopener noreferrer" href="https://github.com/andriihalchuk"><FaGithub /></a>
           </div>
 
           <div className="flex">
@@ -108,8 +107,8 @@ export default function Blog({ isDarkMode, setIsDarkMode }) {
             </Link>
 
             <div className="flex gap-8 mt-4 text-4xl">
-              <a className="hover:text-blue-500" target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in//"><FaLinkedin /></a>
-              <a className="hover:text-violet-600" target="_blank" rel="noopener noreferrer" href="https://github.com/"><FaGithub /></a>
+              <a className="hover:text-blue-500" target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/andrii-halchuk/"><FaLinkedin /></a>
+              <a className="hover:text-violet-600" target="_blank" rel="noopener noreferrer" href="https://github.com/andriihalchuk"><FaGithub /></a>
             </div>
           </div>
         )}

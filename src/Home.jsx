@@ -57,7 +57,7 @@ export default function Home({ isDarkMode, setIsDarkMode }) {
           </Link>
         </div>
 
-        {/* --- DESKTOP MENU --- */}
+        {/* --- Desktop menu --- */}
         <div className="hidden md:flex gap-8 items-center">
           <div className="flex gap-6">
             {NAV_LINKS.map((link) => (
@@ -82,7 +82,7 @@ export default function Home({ isDarkMode, setIsDarkMode }) {
           </div>
         </div>
 
-        {/* --- MOBILE MENU BUTTON --- */}
+        {/* --- Mobile menu button --- */}
         <div className="flex md:hidden items-center gap-4">
           <button onClick={() => setIsDarkMode(!isDarkMode)} className={themeBtnClass}>
             {isDarkMode ? <MdLightMode /> : <MdDarkMode />}
@@ -95,7 +95,7 @@ export default function Home({ isDarkMode, setIsDarkMode }) {
           </button>
         </div>
 
-        {/* --- MOBILE DROPDOWN MENU --- */}
+        {/* --- Mobile dropdown menu --- */}
         {isMenuOpen && (
           <div className={`absolute top-full left-0 w-full flex flex-col items-center gap-6 py-8 border-t border-slate-700 shadow-xl md:hidden ${isDarkMode ? 'bg-slate-900' : 'bg-blue-300'
             }`}>
@@ -134,9 +134,29 @@ export default function Home({ isDarkMode, setIsDarkMode }) {
         <section className="max-w-4xl w-full scroll-mt-24" id="general">
           <h1 className="text-center mb-6 font-bold">Andrii Halchuk</h1>
           <p className="leading-relaxed text-center text-3xl">
-            Education: Computer Science @ University of Warwick '28
-
+            <b>Education:</b> Computer Science @ University of Warwick '28
           </p>
+          <p className="leading-relaxed text-center text-3xl">
+            <b>Interests:</b> Backend / Fullstack Development
+          </p>
+          <div className="flex justify-center mt-8">
+            <a 
+              className={`px-4 py-2 text-3xl font-bold rounded-xl shadow-lg transition-colors duration-300 ${
+                isDarkMode 
+                  ? 'bg-blue-600 hover:bg-blue-500 text-white' 
+                  : 'bg-blue-500 hover:bg-blue-600 text-white'
+              }`} 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              href="personal-website/public/Andrii_Halchuk_CV.pdf"
+            >
+              My Resume
+            </a>
+          </div>
+        </section>
+
+        <section className="max-w-4xl w-full scroll-mt-24" id="skills">
+          <h1 className="text-center mb-6 font-bold">Technical skills</h1>
         </section>
 
         <section className="max-w-4xl w-full scroll-mt-24" id="projects">
@@ -157,10 +177,6 @@ export default function Home({ isDarkMode, setIsDarkMode }) {
             </div>
             <div className={getProjectCardClass('bg-blue-300')}></div>
           </div>
-        </section>
-
-        <section className="max-w-4xl w-full scroll-mt-24" id="skills">
-          <h1 className="text-center mb-6 font-bold">Technical skills</h1>
         </section>
 
         <section className="max-w-4xl w-full scroll-mt-24" id="contact">

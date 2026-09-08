@@ -35,23 +35,20 @@ export default function Blog({ isDarkMode, setIsDarkMode }) {
         className={`flex items-center justify-between p-4 gap-6 text-2xl sticky top-0 z-50 ${isDarkMode ? 'bg-slate-900 text-blue-200' : 'bg-blue-300 text-blue-950'
           }`}
       >
-        {/* Changed <a> to <Link> for the logo */}
         <div className="font-bold">
           <Link to="/">
             <img className="h-12 w-12" src="/personal-website/logo.png" alt="logo" />
           </Link>
         </div>
 
-        {/* --- DESKTOP MENU --- */}
+        {/* --- Desktop menu --- */}
         <div className="hidden md:flex gap-8 items-center">
           <div className="flex gap-6">
-            {/* Changed <a> to <Link to={...}> */}
             {NAV_LINKS.map((link) => (
               <Link key={link.label} className={navBtnClass} to={link.href}>
                 {link.label}
               </Link>
             ))}
-            {/* Changed from /Blog back to / */}
             <Link to="/" className={navBtnClass}>
               Home
             </Link>
@@ -69,7 +66,7 @@ export default function Blog({ isDarkMode, setIsDarkMode }) {
           </div>
         </div>
 
-        {/* --- MOBILE MENU BUTTON --- */}
+        {/* --- Mobile menu button --- */}
         <div className="flex md:hidden items-center gap-4">
           <button onClick={() => setIsDarkMode(!isDarkMode)} className={themeBtnClass}>
             {isDarkMode ? <MdLightMode /> : <MdDarkMode />}
@@ -82,11 +79,10 @@ export default function Blog({ isDarkMode, setIsDarkMode }) {
           </button>
         </div>
 
-        {/* --- MOBILE DROPDOWN MENU --- */}
+        {/* --- Mobile dropdown menu --- */}
         {isMenuOpen && (
           <div className={`absolute top-full left-0 w-full flex flex-col items-center gap-6 py-8 border-t border-slate-700 shadow-xl md:hidden ${isDarkMode ? 'bg-slate-900' : 'bg-blue-300'
             }`}>
-            {/* Changed <a> to <Link to={...}> */}
             {NAV_LINKS.map((link) => (
               <Link
                 key={link.label}
@@ -97,7 +93,6 @@ export default function Blog({ isDarkMode, setIsDarkMode }) {
                 {link.label}
               </Link>
             ))}
-            {/* Changed from /Home to / */}
             <Link
               to="/"
               className={navBtnClass}

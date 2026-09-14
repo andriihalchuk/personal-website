@@ -1,19 +1,69 @@
 import { useState, useEffect } from 'react';
-import { FaLinkedin, FaGithub, FaBars, FaTimes } from 'react-icons/fa';
+import { FaLinkedin, FaGithub, FaBars, FaTimes, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import { MdLightMode, MdDarkMode } from 'react-icons/md';
 import { useLocation, Link } from 'react-router-dom';
 
 // Extracted navigation data to keep the JSX clean
 const NAV_LINKS = [
   { label: 'General', href: '#general' },
-  { label: 'Projects', href: '#projects' },
   { label: 'Skills', href: '#skills' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Projects', href: '#projects' },
+];
+
+const PROJECTS = [
+  {
+    id: 1,
+    title: "Overclock",
+    description: "An app that eliminates distractions and helps to lock in",
+    img: "/personal-website/overclock.png",
+    link: "#"
+  },
+  {
+    id: 2,
+    title: "LambdaGPT",
+    description: "A chatbot.",
+    img: "/personal-website/lgpt.png",
+    link: "#"
+  },
+  {
+    id: 3,
+    title: "Coming Soon",
+    description: "Another awesome project.",
+    img: "https://via.placeholder.com/400x200",
+    link: "#"
+  }
+];
+
+const SKILLS_DATA = [
+  {
+    category: "Languages",
+    items: ["Python", "Java", "Haskell", "JavaScript", "SQL", "HTML5", "CSS3"]
+  },
+  {
+    category: "Frameworks & Libraries",
+    items: ["React", "Tailwind CSS", "Chart.js", "Jinja2", "jQuery"]
+  },
+  {
+    category: "Tools & Software",
+    items: ["Git", "Linux (CLI)", "SQLite", "Vite", "PyInstaller", "VS Code", "Replit"]
+  }
 ];
 
 export default function Home({ isDarkMode, setIsDarkMode }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const location = useLocation(); // <-- Get the current URL data
+  const location = useLocation(); // Get the current URL data
+
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const visibleCards = 2;
+  const maxIndex = PROJECTS.length - visibleCards;
+
+  const nextSlide = () => {
+    setCurrentIndex((prev) => (prev >= maxIndex ? prev : prev + 1));
+  };
+
+  const prevSlide = () => {
+    setCurrentIndex((prev) => (prev <= 0 ? 0 : prev - 1));
+  };
 
   useEffect(() => {
     if (location.hash) {
@@ -36,11 +86,6 @@ export default function Home({ isDarkMode, setIsDarkMode }) {
   const themeBtnClass = `text-4xl rounded-4xl w-12 h-12 flex justify-center items-center transition-colors ease-in-out duration-300 delay-50 cursor-pointer ${isDarkMode
     ? 'hover:text-amber-400 hover:bg-slate-800 text-blue-200'
     : 'hover:text-violet-950 hover:bg-blue-600 text-blue-950'
-    }`;
-
-  // Reusable function for project cards to handle the slight difference in light-mode backgrounds
-  const getProjectCardClass = (lightModeBg) =>
-    `rounded-lg overflow-hidden shadow-lg hover:scale-105 transition-transform ${isDarkMode ? 'bg-slate-700' : lightModeBg
     }`;
 
   return (
@@ -148,41 +193,98 @@ export default function Home({ isDarkMode, setIsDarkMode }) {
               }`} 
               target="_blank" 
               rel="noopener noreferrer" 
-              href="personal-website/public/Andrii_Halchuk_CV.pdf"
+              href="Andrii_Halchuk_CV.pdf"
             >
               My Resume
             </a>
           </div>
         </section>
 
-        <section className="max-w-4xl w-full scroll-mt-24" id="skills">
-          <h1 className="text-center mb-6 font-bold">Technical skills</h1>
-        </section>
-
-        <section className="max-w-4xl w-full scroll-mt-24" id="projects">
-          <h1 className="text-center mb-6 font-bold">Projects</h1>
-          <div className="grid gap-12 grid-cols-1 md:grid-cols-2">
-
-            <div className={getProjectCardClass('bg-blue-400')}>
-              {/* Added p-3 for the gap, and rounded-2xl so the image corners match the card */}
-              <img src="/personal-website/overclock.png" alt="Overclock Project" className="w-full object-cover p-3 rounded-2xl" />
-
-              <div className="p-6 pt-2 flex flex-col gap-4">
-                <h3 className="text-3xl font-bold">Overclock</h3>
-                <p className="text-2xl">An app that eliminates distractions and helps to lock in</p>
-                <a href="#" className="text-xl underline hover:text-blue-500 transition-colors">
-                  Link to github
-                </a>
+        <section className="max-w-6xl w-full scroll-mt-24 px-4" id="skills">
+          <h1 className="text-center mb-12 font-bold">Technical Skills</h1>
+          
+          <div className="flex flex-col gap-6">
+            {SKILLS_DATA.map((skillGroup, index) => (
+              <div 
+                key={index} 
+                // rounded-lg matches project cards
+                className={`p-4 rounded-lg shadow-sm border grid grid-cols-1 md:grid-cols-[360px_1fr] gap-6 md:gap-12 items-center ${
+                  isDarkMode 
+                    ? 'bg-slate-700/50 border-slate-600' 
+                    : 'bg-blue-50/60 border-blue-200'
+                }`}
+              >
+                {/* Left side label */}
+                <h3 className="text-2xl font-bold md:text-right">
+                  {skillGroup.category}:
+                </h3>
+                
+                {/* Right side skills list */}
+                <p className="text-2xl leading-relaxed">
+                  {skillGroup.items.join(', ')}
+                </p>
               </div>
-            </div>
-            <div className={getProjectCardClass('bg-blue-300')}></div>
+            ))}
           </div>
         </section>
 
-        <section className="max-w-4xl w-full scroll-mt-24" id="contact">
-          <h1 className="text-center mb-6 font-bold">Contact</h1>
-        </section>
+        <section className="max-w-6xl w-full scroll-mt-24 px-24 relative" id="projects">
+          <h1 className="text-center mb-6 font-bold">Projects</h1>
+          
+          {/* Carousel Container */}
+          <div className="relative overflow-hidden w-full py-6 -my-6 px-4 -mx-4">
+            
+            <div 
+              className="flex transition-transform duration-500 ease-in-out gap-12"
+              style={{ transform: `translateX(calc(-${currentIndex} * (440px + 3rem)))` }}
+            >
+              {PROJECTS.map((project) => (
+                // Fixed project card dimentions
+                <div key={project.id} className="w-[440px] h-[480px] flex-shrink-0">
+                  <div className={`h-full flex flex-col rounded-lg shadow-lg hover:scale-105 transition-transform ${isDarkMode ? 'bg-slate-700' : 'bg-blue-400'}`}>
+                    
+                    {/* Fixed image height to keep them uniform */}
+                    <img 
+                      src={project.img} 
+                      alt={`${project.title} Project`} 
+                      className="w-full object-scale-down p-3 rounded-3xl h-56 shrink-0" 
+                    />
+                    
+                    <div className="p-6 pt-2 flex flex-col gap-4 flex-grow">
+                      <h3 className="text-3xl font-bold">{project.title}</h3>
+                      <p className="text-2xl line-clamp-3">{project.description}</p>
+                      
+                      {/* mt-auto pushes the link to the very bottom*/}
+                      <a href={project.link} className="text-xl underline hover:text-blue-500 transition-colors mt-auto">
+                        Read more
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
 
+          {/* Conditional left button */}
+          {currentIndex > 0 && (
+            <button 
+              onClick={prevSlide} 
+              className={`absolute left-4 top-1/2 -translate-y-1/2 p-4 text-3xl rounded-full shadow-lg z-10 transition-colors ${isDarkMode ? 'bg-slate-700 hover:bg-slate-600' : 'bg-blue-500 text-white hover:bg-blue-600'}`}
+            >
+              <FaChevronLeft />
+            </button>
+          )}
+          
+          {/* Conditional right button */}
+          {currentIndex < maxIndex && (
+            <button 
+              onClick={nextSlide} 
+              className={`absolute right-4 top-1/2 -translate-y-1/2 p-4 text-3xl rounded-full shadow-lg z-10 transition-colors ${isDarkMode ? 'bg-slate-700 hover:bg-slate-600' : 'bg-blue-500 text-white hover:bg-blue-600'}`}
+            >
+              <FaChevronRight />
+            </button>
+          )}
+        </section>
       </main>
     </div>
   );

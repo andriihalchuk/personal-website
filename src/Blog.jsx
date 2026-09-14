@@ -5,9 +5,8 @@ import { FaLinkedin, FaGithub, FaBars, FaTimes } from 'react-icons/fa';
 
 const NAV_LINKS = [
   { label: 'General', href: '/#general' },
-  { label: 'Projects', href: '/#projects' },
   { label: 'Skills', href: '/#skills' },
-  { label: 'Contact', href: '/#contact' },
+  { label: 'Projects', href: '/#projects' },
 ];
 
 export default function Blog({ isDarkMode, setIsDarkMode }) {

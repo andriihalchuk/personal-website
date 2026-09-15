@@ -16,6 +16,7 @@ const PROJECTS = [
     title: "Overclock",
     description: "An app that eliminates distractions and helps to lock in",
     img: "/personal-website/overclock.png",
+    stack: "Python, Flask, SQLite, PyInstaller ",
     link: "#"
   },
   {
@@ -23,6 +24,7 @@ const PROJECTS = [
     title: "LambdaGPT",
     description: "A chatbot.",
     img: "/personal-website/lgpt.png",
+    stack: "Haskell, Open Meteo API",
     link: "#"
   },
   {
@@ -89,7 +91,7 @@ export default function Home({ isDarkMode, setIsDarkMode }) {
     }`;
 
   return (
-    <div className="min-h-screen w-full relative z-10">
+    <div className="flex flex-col min-h-screen w-full relative z-10">
 
       {/* Navbar */}
       <div
@@ -173,7 +175,7 @@ export default function Home({ isDarkMode, setIsDarkMode }) {
 
       {/* Main Content */}
       <main
-        className={`p-10 flex flex-col items-center justify-center gap-30 text-4xl ${isDarkMode ? 'text-blue-200' : 'text-blue-950'
+        className={`flex-grow p-10 flex flex-col items-center justify-center gap-30 text-4xl ${isDarkMode ? 'text-blue-200' : 'text-blue-950'
           }`}
       >
         <section className="max-w-4xl w-full scroll-mt-24" id="general">
@@ -253,6 +255,7 @@ export default function Home({ isDarkMode, setIsDarkMode }) {
                     <div className="p-6 pt-2 flex flex-col gap-4 flex-grow">
                       <h3 className="text-3xl font-bold">{project.title}</h3>
                       <p className="text-2xl line-clamp-3">{project.description}</p>
+                      <p className="text-2xl line-clamp-3"><i><b>Tech Stack:</b> {project.stack}</i></p>
                       
                       {/* mt-auto pushes the link to the very bottom*/}
                       <a href={project.link} className="text-xl underline hover:text-blue-500 transition-colors mt-auto">
@@ -286,6 +289,23 @@ export default function Home({ isDarkMode, setIsDarkMode }) {
           )}
         </section>
       </main>
+      {/* Footer */}
+      <footer
+        className={`w-full py-3 px-10 mt-auto text-xl flex flex-col md:flex-row items-center justify-between gap-4 ${
+          isDarkMode ? 'bg-slate-900 text-blue-200' : 'bg-blue-300 text-blue-950'
+        }`}
+      >
+        <p>&copy; {new Date().getFullYear()} Andrii Halchuk. All rights reserved.</p>
+        <p>
+          Contact:{' '}
+          <a
+            href="mailto:andriihalchuk07@gmail.com"
+            className="underline hover:text-blue-500 transition-colors"
+          >
+            andriihalchuk07@gmail.com
+          </a>
+        </p>
+      </footer>
     </div>
   );
 }

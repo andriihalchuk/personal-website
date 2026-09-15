@@ -27,7 +27,7 @@ export default function Blog({ isDarkMode, setIsDarkMode }) {
     }`;
   return (
 
-    <div className={`min-h-screen w-full relative z-10`}>
+    <div className={`flex flex-col min-h-screen w-full relative z-10`}>
 
       {/* Navbar */}
       <div
@@ -109,11 +109,28 @@ export default function Blog({ isDarkMode, setIsDarkMode }) {
       </div>
 
       <main
-        className={`p-10 flex flex-col items-center justify-center gap-80 text-4xl ${isDarkMode ? 'text-blue-200' : 'text-blue-950'
+        className={`flex-grow p-10 flex flex-col items-center justify-center gap-80 text-4xl ${isDarkMode ? 'text-blue-200' : 'text-blue-950'
           }`}
       >
         There is nothing to display yet. Come back later!
       </main>
+      {/* Footer */}
+      <footer
+        className={`w-full py-3 px-10 mt-auto text-xl flex flex-col md:flex-row items-center justify-between gap-4 ${
+          isDarkMode ? 'bg-slate-900 text-blue-200' : 'bg-blue-300 text-blue-950'
+        }`}
+      >
+        <p>&copy; {new Date().getFullYear()} Andrii Halchuk. All rights reserved.</p>
+        <p>
+          Contact:{' '}
+          <a
+            href="mailto:andriihalchuk07@gmail.com"
+            className="underline hover:text-blue-500 transition-colors"
+          >
+            andriihalchuk07@gmail.com
+          </a>
+        </p>
+      </footer>
     </div>
   );
 }

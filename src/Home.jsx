@@ -14,18 +14,18 @@ const PROJECTS = [
   {
     id: 1,
     title: "Overclock",
-    description: "An app that eliminates distractions and helps to lock in",
+    description: "A terminal app that blocks distracting websites.",
     img: "/personal-website/overclock.png",
     stack: "Python, Flask, SQLite, PyInstaller ",
-    link: "#"
+    link: "https://github.com/andriihalchuk/overclock"
   },
   {
     id: 2,
     title: "LambdaGPT",
-    description: "A chatbot.",
+    description: "A command-line chatbot that supports natural input parsing.",
     img: "/personal-website/lgpt.png",
     stack: "Haskell, Open Meteo API",
-    link: "#"
+    link: "https://github.com/andriihalchuk/lambda-gpt"
   },
   {
     id: 3,
@@ -175,7 +175,7 @@ export default function Home({ isDarkMode, setIsDarkMode }) {
 
       {/* Main Content */}
       <main
-        className={`flex-grow p-10 flex flex-col items-center justify-center gap-30 text-4xl ${isDarkMode ? 'text-blue-200' : 'text-blue-950'
+        className={`flex-grow p-10 flex flex-col items-center justify-center gap-25 text-4xl ${isDarkMode ? 'text-blue-200' : 'text-blue-950'
           }`}
       >
         <section className="max-w-4xl w-full scroll-mt-24" id="general">
@@ -188,7 +188,7 @@ export default function Home({ isDarkMode, setIsDarkMode }) {
           </p>
           <div className="flex justify-center mt-8">
             <a 
-              className={`px-4 py-2 text-3xl font-bold rounded-xl shadow-lg transition-colors duration-300 ${
+              className={`px-4 py-2 text-3xl rounded-xl shadow-lg transition-colors duration-300 ${
                 isDarkMode 
                   ? 'bg-blue-600 hover:bg-blue-500 text-white' 
                   : 'bg-blue-500 hover:bg-blue-600 text-white'
@@ -258,7 +258,7 @@ export default function Home({ isDarkMode, setIsDarkMode }) {
                       <p className="text-2xl line-clamp-3"><i><b>Tech Stack:</b> {project.stack}</i></p>
                       
                       {/* mt-auto pushes the link to the very bottom*/}
-                      <a href={project.link} className="text-xl underline hover:text-blue-500 transition-colors mt-auto">
+                      <a href={project.link} target="_blank" rel="noopener noreferrer" className="text-xl underline hover:text-blue-500 transition-colors mt-auto">
                         Read more
                       </a>
                     </div>
